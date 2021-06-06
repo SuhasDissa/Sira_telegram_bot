@@ -19,7 +19,7 @@ function image(search, chatId,bot) {
         if (error) {
             return;
         }
-
+		bot.sendMessage(chatId,responseBody);
         $ = cheerio.load(responseBody);
 
         const links = $("div.image a.link img");
@@ -50,7 +50,7 @@ module.exports = {
 
             var term = args.join("+");
 			var encoded = encodeURI(term);
-
+			bot.sendMessage(chatId,encoded);
             image(encoded, chatId,bot);
         }
     },
