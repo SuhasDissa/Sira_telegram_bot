@@ -22,9 +22,9 @@ function image(search, chatId,bot) {
 
         $ = cheerio.load(responseBody);
 
-        const links = $(".image a.link");
+        const links = $("div.image a.link img");
 
-        const urls = new Array(links.length).fill(0).map((v, i) => links.eq(i).attr("href"));
+        const urls = new Array(links.length).fill(0).map((v, i) => links.eq(i).attr("src"));
         if (!urls.length) {
 			bot.sendMessage(chatId,"No image found"
             );
