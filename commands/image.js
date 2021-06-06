@@ -19,14 +19,13 @@ function image(search, chatId,bot) {
         if (error) {
             return;
         }
-		console.log(responseBody)
         $ = cheerio.load(responseBody);
 
-        const links = $("div.image a.link img");
+        const links = $("div.image a.link");
 
-        const urls = new Array(links.length).fill(0).map((v, i) => links.eq(i).attr("src"));
+        const urls = new Array(links.length).fill(0).map((v, i) => links.eq(i).attr("href"));
         if (!urls.length) {
-			bot.sendMessage(chatId,"No image found"
+			bot.sendMessage(chatId,"No image found\nBot was blocked by recapcha"
             );
         }
         try {
