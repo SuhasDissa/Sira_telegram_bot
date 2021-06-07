@@ -7,8 +7,8 @@ function getRndInteger(min, max) {
 module.exports = {
 	name: 'pp',
 	description: 'Ping!',
-	async execute(chatId, args,bot) {
+	async execute(msg, args,bot) {
         var p = getRndInteger(0, values.pp.length);
-       bot.sendMessage(chatId,"your pee pee size:\n" + values.pp[p]);
+       bot.sendMessage(msg.chat.id, msg.from.first_name + "\'s pee pee size:\n" + values.pp[p]);
 	},
 };

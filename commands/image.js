@@ -5,7 +5,7 @@ function getRndInteger(min, max) {
     return Math.floor(Math.random() * (max - min)) + min;
   }
 
-function image(search, chatId,bot) {
+function image(search, msg,bot) {
 
     const options = {
         url: "http://results.dogpile.com/serp?qc=images&q=" + search,
@@ -25,11 +25,11 @@ function image(search, chatId,bot) {
 
         const urls = new Array(links.length).fill(0).map((v, i) => links.eq(i).attr("href"));
         if (!urls.length) {
-			bot.sendMessage(chatId,"No image found\nBot was blocked by recapcha"
+			bot.sendMessage(msg.chat.id,"No image found\nBot was blocked by recapcha"
             );
         }
         try {
-            bot.sendPhoto(chatId, urls[getRndInteger(0, urls.length)]);
+            bot.sendPhoto(msg.chat.id, urls[getRndInteger(0, urls.length)]);
         } catch (error) {
             console.error(error);
         }
@@ -40,16 +40,16 @@ function image(search, chatId,bot) {
 module.exports = {
     name: 'image',
     description: 'Ping!',
-    async execute(chatId, args,bot) {
+    async execute(msg, args,bot) {
         args.shift();
         if (args.length < 1) {
-            bot.sendMessage(chatId,"Please add a search phrase,\nex: /image cute dog"
+            bot.sendMessage(msg.chat.id,"Please add a search phrase,\nex: /image cute dog"
             );
         } else {
 
             var term = args.join("+");
 			var encoded = encodeURI(term);
-            image(encoded, chatId,bot);
+            image(encoded,msg,bot);
         }
     },
 };

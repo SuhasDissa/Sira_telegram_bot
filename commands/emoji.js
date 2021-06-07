@@ -5,8 +5,8 @@ function getRndInteger(min, max) {
   module.exports = {
 	name: 'emoji',
 	description: 'Ping!',
-	async execute(chatId, args,bot) {
+	async execute(msg, args,bot) {
         var i = getRndInteger(0, values.emoji.length);
-        bot.sendMessage(chatId,values.emoji[i]);
+        bot.sendMessage(msg.chat.id,values.emoji[i]);
 	},
 };

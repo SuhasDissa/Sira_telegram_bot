@@ -2,13 +2,13 @@ const request = require("request");
 module.exports = {
 	name: 'fact',
 	description: 'Ping!',
-	async execute(chatId, args,bot) {
+	async execute(msg, args,bot) {
 		
 		const urlfact = "https://uselessfacts.jsph.pl/random.json?language=en";
 
       request(urlfact, function(err, response, body) {
         let fact = JSON.parse(body);
-        bot.sendMessage(chatId,fact.text);
+        bot.sendMessage(msg.chat.id,fact.text);
       });
 
         

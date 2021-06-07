@@ -1,7 +1,7 @@
 module.exports = {
 	name: 'ping',
 	description: 'Ping!',
-	async execute(chatId, args,bot) {
-        bot.sendMessage(chatId,'pong');
+	async execute(msg, args,bot) {
+        bot.sendMessage(msg.chat.id,'pong');
 	},
 };

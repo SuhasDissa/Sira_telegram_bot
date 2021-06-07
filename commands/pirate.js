@@ -2,12 +2,12 @@ const request = require("request");
 module.exports = {
 	name: 'pirate',
 	description: 'Ping!',
-	async execute(chatId, args,bot) {
+	async execute(msg, args,bot) {
         
     
   args.shift();
         if (args.length < 1) {
-            bot.sendMessage(chatId,"Please add a phrase,\nex: /pirate Hello sir! my mother goes with me to the ocean."
+            bot.sendMessage(msg.chat.id,"Please add a phrase,\nex: /pirate Hello sir! my mother goes with me to the ocean."
             );
         } else {
 
@@ -19,10 +19,10 @@ module.exports = {
       let parsed = JSON.parse(body);
 	  var encoded =parsed.contents.translated;
 	  var decoded = decodeURI(encoded);
-            bot.sendMessage(chatId,decoded)
+            bot.sendMessage(msg.chat.id,decoded)
 			});
         } catch (error) {
-            bot.sendMessage(chatId,"translate failed")
+            bot.sendMessage(msg.chat.id,"translate failed")
         }
 		}
 

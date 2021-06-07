@@ -8,7 +8,7 @@ function getRndInteger(min, max) {
 module.exports = {
     name: 'meme',
     description: 'Ping!',
-    async execute(chatId, args, bot) {
+    async execute(msg, args, bot) {
 		if(!memelist.length){
         try {
             request("https://www.reddit.com/r/memes/top/.json?sort=top&t=week&limit=500", function (
@@ -19,7 +19,7 @@ module.exports = {
                 if (!error && response.statusCode == 200) {
                     const comic = JSON.parse(body);
                     var i = getRndInteger(0, comic.data.children.length);
-                    bot.sendMessage(chatId, comic.data.children[i].data.url);
+                    bot.sendMessage(msg.chat.id, comic.data.children[i].data.url);
 					
 					for (x = 0; x < comic.data.children.length; x++) {
 						memelist[x] = comic.data.children[x].data.url
@@ -31,7 +31,7 @@ module.exports = {
         }
 		}else{
 			var x = getRndInteger(0, memelist.length);
-			bot.sendMessage(chatId, memelist[x]);
+			bot.sendMessage(msg.chat.id, memelist[x]);
 		}
 		
     },
