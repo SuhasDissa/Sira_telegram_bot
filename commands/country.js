@@ -5,7 +5,9 @@ module.exports = {
 	async execute(msg, args,bot) {
 		args.shift();
 		
-		if(!args[0]) bot.sendMessage(msg.chat.id,"Please tell me a country code");
+		if(!args[0]){
+			bot.sendMessage(msg.chat.id,"Please tell me a country code");
+			return}
 		var url = "https://restcountries.eu/rest/v2/name/" + args.join("%20");
   
 
