@@ -15,8 +15,8 @@ module.exports = {
 						title = comic.items[x].title
 						desc = comic.items[x].fulltext
 						
-						message = "*" + title +"*\n\n"+ desc.replace("<p>","").replace("</p>","").replace("<br />","");
-						bot.sendMessage(msg.chat.id, message);
+						message = "*" + title +"*\n\n"+ desc
+						bot.sendMessage(msg.chat.id, message,{parse_mode : "Markdown"});
 					}
                 }
             });
