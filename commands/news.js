@@ -11,11 +11,11 @@ module.exports = {
             ) {
                 if (!error && response.statusCode == 200) {
                     const comic = JSON.parse(body);					
-					for (x = 0; x < 5; x++) {
+					for (x = 0; x < 10; x++) {
 						title = comic.items[x].title
 						desc = comic.items[x].fulltext
 						
-						message = "*" + title +"*\n\n"+ desc
+						message = "*" + title +"*\n\n"
 						bot.sendMessage(msg.chat.id, message,{parse_mode : "Markdown"});
 					}
                 }

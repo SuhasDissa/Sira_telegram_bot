@@ -41,7 +41,8 @@ module.exports = {
     description: 'Ping!',
     async execute(msg, args,bot) {
         args.shift();
-        if (args.length < 1) {
+		bot.sendMessage(msg.chat.id,"This command is temporary disabled");
+       /* if (args.length < 1) {
             bot.sendMessage(msg.chat.id,"Please add a search phrase,\nex: /image cute dog"
             );
         } else {
@@ -49,6 +50,6 @@ module.exports = {
             var term = args.join("+");
 			var encoded = encodeURI(term);
             image(encoded,msg,bot);
-        }
+        }*/
     },
 };
