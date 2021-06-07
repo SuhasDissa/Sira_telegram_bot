@@ -8,7 +8,7 @@ function getRndInteger(min, max) {
 function image(search, msg,bot) {
 
     const options = {
-        url: "http://results.dogpile.com/serp?qc=images&q=" + search,
+        url: "https://www.bing.com/images/search?q=" + search,
         method: "GET",
         headers: {
             "Accept": "text/html",
@@ -21,12 +21,11 @@ function image(search, msg,bot) {
         }
         $ = cheerio.load(responseBody);
 
-        const links = $("div.image a.link");
+        const links = $("div.imgpt a.iusc");
 
         const urls = new Array(links.length).fill(0).map((v, i) => links.eq(i).attr("href"));
         if (!urls.length) {
-			bot.sendMessage(msg.chat.id,"No image found\nBot was blocked by recapcha"
-            );
+			bot.sendMessage(msg.chat.id,"Error");
         }
         try {
             bot.sendPhoto(msg.chat.id, urls[getRndInteger(0, urls.length)]);
