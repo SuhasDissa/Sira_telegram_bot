@@ -9,7 +9,7 @@ function getRndInteger(min, max) {
     return Math.floor(Math.random() * (max - min)) + min;
   }
 // replace the value below with the Telegram token you receive from @BotFather
-const token = '1500257418:AAHHQeLAONLdzkpbqoFBlOkrJ_EhiBDsdW0';
+const token = process.env.TOKEN;
 
 // Create a bot that uses 'polling' to fetch new updates
 const bot = new TelegramBot(token, {polling: true});
